@@ -22,8 +22,7 @@ namespace lexico
             CorcheteDerecho,
             CorcheteIzquierdo,
             OperadorDivision,
-            Numero,
-            NumeroNegativo
+            Numero
         }
         private Tipo tipoToken;
         private String valor;
