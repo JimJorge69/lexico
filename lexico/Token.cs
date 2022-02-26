@@ -10,7 +10,7 @@ namespace lexico
     {
         public enum Tipo
         {
-            Error = -1,
+            Error,
             ParentesisIzquierdo,
             ParentesisDerecho,
             LlaveIzquierda,
@@ -71,8 +71,6 @@ namespace lexico
                     return "Operador Division";
                 case Tipo.Numero: /* numero 1 235456789*/
                     return "Numero";
-                case Tipo.NumeroNegativo: /* numeros negativos -1235456789*/
-                    return "Numero Negativo";
                 default:
                     return "";
             }

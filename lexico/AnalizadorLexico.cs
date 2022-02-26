@@ -29,79 +29,82 @@ namespace lexico
                         {
                             auxiliarLexico += caracter;
                             agregarToken(Token.Tipo.ParentesisIzquierdo);
+                            break;
                         }
                         else if (caracter == ')')//Parentesis Derecho
                         {
                             auxiliarLexico += caracter;
                             agregarToken(Token.Tipo.ParentesisDerecho);
+                            break;
                         }
                         else if (caracter == '{')//LLave Izquierda
                         {
                             auxiliarLexico += caracter;
                             agregarToken(Token.Tipo.LlaveIzquierda);
+                            break;
                         }
                         else if (caracter == '}')//LLave Derecha
                         {
                             auxiliarLexico += caracter;
                             agregarToken(Token.Tipo.LlaveDerecha);
+                            break;
                         }
                         else if (caracter == '*')//Operador Multiplicacion
                         {
                             auxiliarLexico += caracter;
                             agregarToken(Token.Tipo.OperadorMultiplicador);
+                            break;
                         }
                         else if (caracter == '/')//Operador Division
                         {
                             auxiliarLexico += caracter;
                             agregarToken(Token.Tipo.OperadorDivision);
+                            break;
                         }
                         else if (caracter == '+')//Operador Suma
                         {
                             auxiliarLexico += caracter;
                             agregarToken(Token.Tipo.OperadorSuma);
+                            break;
                         }
                         else if (caracter == '-')//Operador resta
                         {
                             auxiliarLexico += caracter;
                             agregarToken(Token.Tipo.OperadorResta);
-                        }else if (caracter == '[')//Corchete izquierdo
+                            break;
+                        }
+                        else if (caracter == '[')//Corchete izquierdo
                         {
                             auxiliarLexico += caracter;
                             agregarToken(Token.Tipo.CorcheteIzquierdo);
+                            break;
                         }
                         else if (caracter == ']')//Corchete derecho
                         {
                             auxiliarLexico += caracter;
                             agregarToken(Token.Tipo.CorcheteDerecho);
+                            break;
                         }
-                        else if (caracter >= 0)//Numeros positivos
+                        int variable = (int)Char.GetNumericValue(caracter);
+                        if (variable>=0)//Numeros
                         {
                             auxiliarLexico += caracter;
                             agregarToken(Token.Tipo.Numero);
-                        }else if (caracter < 0)//Numeros negativos
-                        {
-                            auxiliarLexico += caracter;
-                            agregarToken(Token.Tipo.NumeroNegativo);
-                        }
-                        break;
-                    case 1://algun error
-                        if (char.IsDigit(caracter))
-                        {
-                            estado = 1;
-                            auxiliarLexico += caracter;
-                        }
-                        break;
-                    case 2://Numero Foltante
-                        if (Char.IsDigit(caracter))
-                        {
-                            estado = 9;
-                            auxiliarLexico += caracter;
+                            break;
                         }
                         else
                         {
-                            agregarToken(Token.Tipo.NumeroDecimal);
-                            i -= 1;
+                            auxiliarLexico += caracter;
+                            agregarToken(Token.Tipo.Error);
                         }
+                        break;
+                    case 1://algun error
+                         auxiliarLexico += caracter;
+                        agregarToken(Token.Tipo.Error);
+                        break;
+                    default:
+                        auxiliarLexico += caracter;
+                        agregarToken(Token.Tipo.Error);
                         break;
                 }
             }

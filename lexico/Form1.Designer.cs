@@ -34,8 +34,8 @@ namespace lexico
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button2 = new System.Windows.Forms.Button();
-            this.Column1Operador = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2Variable = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1Operador = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -55,6 +55,8 @@ namespace lexico
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(253, 20);
             this.textBox1.TabIndex = 1;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             // 
             // button1
             // 
@@ -74,8 +76,8 @@ namespace lexico
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1Operador,
-            this.Column2Variable});
+            this.Column2Variable,
+            this.Column1Operador});
             this.dataGridView1.Location = new System.Drawing.Point(302, 119);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
@@ -94,17 +96,17 @@ namespace lexico
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // Column1Operador
-            // 
-            this.Column1Operador.HeaderText = "Operador";
-            this.Column1Operador.Name = "Column1Operador";
-            this.Column1Operador.ReadOnly = true;
-            // 
             // Column2Variable
             // 
             this.Column2Variable.HeaderText = "Variable";
             this.Column2Variable.Name = "Column2Variable";
             this.Column2Variable.ReadOnly = true;
+            // 
+            // Column1Operador
+            // 
+            this.Column1Operador.HeaderText = "Operador";
+            this.Column1Operador.Name = "Column1Operador";
+            this.Column1Operador.ReadOnly = true;
             // 
             // Form1
             // 
@@ -132,8 +134,8 @@ namespace lexico
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1Operador;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2Variable;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1Operador;
     }
 }
 

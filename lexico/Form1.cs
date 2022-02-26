@@ -52,5 +52,15 @@ namespace lexico
             button2.Enabled = false;
             button2.BackColor = Color.Red;
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+           
+        }
     }
 }
