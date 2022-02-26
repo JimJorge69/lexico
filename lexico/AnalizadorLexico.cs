@@ -92,8 +92,8 @@ namespace lexico
                             agregarToken(Token.Tipo.Numero);
                             break;
                         }
-                        else
-                        {
+                        else//Default si no se encontro ninguna coincidencia
+                        {//Marcar error
                             auxiliarLexico += caracter;
                             agregarToken(Token.Tipo.Error);
                         }
@@ -102,7 +102,7 @@ namespace lexico
                          auxiliarLexico += caracter;
                         agregarToken(Token.Tipo.Error);
                         break;
-                    default:
+                    default://rectifiacion si hay error
                         auxiliarLexico += caracter;
                         agregarToken(Token.Tipo.Error);
                         break;
