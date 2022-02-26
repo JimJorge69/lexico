@@ -85,7 +85,7 @@ namespace lexico
                             agregarToken(Token.Tipo.CorcheteDerecho);
                             break;
                         }
-                        int variable = (int)Char.GetNumericValue(caracter);
+                        int variable = (int)Char.GetNumericValue(caracter);// Se cambia a enteros para que valide los errores
                         if (variable>=0)//Numeros
                         {
                             auxiliarLexico += caracter;
