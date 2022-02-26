@@ -46,7 +46,7 @@ namespace lexico
             switch (tipoToken)
             {
                 case Tipo.Error:/**/
-                    return "Error";
+                    return " X Error X";
                 case Tipo.ParentesisIzquierdo:/* ( */
                     return "Parentesis Izquierdo";
                 case Tipo.ParentesisDerecho:/* ) */
