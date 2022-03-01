@@ -9,6 +9,7 @@ namespace lexico
 {
     class AnalizadorLexico
     {
+        //Se declaran las variables a utilizar
         private LinkedList<Token> Salida;
         private int estado;
         private String auxiliarLexico;
