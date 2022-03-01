@@ -40,6 +40,7 @@ namespace lexico
                 button1.BackColor = Color.Red;
                 button2.Enabled = true;
                 button2.BackColor = Color.YellowGreen;
+                textBox1.Enabled = false;
             }
         }
 
@@ -51,6 +52,7 @@ namespace lexico
             button1.BackColor = Color.GreenYellow;
             button2.Enabled = false;
             button2.BackColor = Color.Red;
+            textBox1.Enabled = true;
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
