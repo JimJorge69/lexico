@@ -8,7 +8,7 @@ namespace lexico
 {
     class Token
     {
-        public enum Tipo
+        public enum Tipo//Se declaran las variables que se utilizaran para el analizador lexico
         {
             Error,
             ParentesisIzquierdo,
@@ -24,9 +24,10 @@ namespace lexico
             OperadorDivision,
             Numero
         }
+        //Variables para el token
         private Tipo tipoToken;
         private String valor;
-
+       
         public Token(Tipo TipoDelToken, string val)
         {
             this.tipoToken = TipoDelToken;
@@ -40,7 +41,7 @@ namespace lexico
         {
             return this.tipoToken.GetHashCode().ToString();
         }
-        public String GetTipo()
+        public String GetTipo()//Se coloca el mensaje que mostrara cada token
         {
             switch (tipoToken)
             {
