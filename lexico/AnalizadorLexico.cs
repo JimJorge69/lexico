@@ -14,7 +14,7 @@ namespace lexico
         private int estado;
         private String auxiliarLexico;
         private int contador;
-        private int parentesisD, parentesisI, LlaveD, LlaveI,CorcheteD,CorcheteI;
+        private int parentesisD, parentesisI, LlaveD, LlaveI,CorcheteD,CorcheteI,mas,menos,multi,divi,valida;
 
         public LinkedList<Token> escanear(String entrada)
         {
@@ -23,35 +23,80 @@ namespace lexico
             estado = 0;
             auxiliarLexico = "";
             contador = 0;
-            parentesisD = 0; parentesisI = 0; LlaveD = 0; LlaveI = 0; CorcheteD = 0;CorcheteI = 0; // Variables para identificar validacion
+            parentesisD = 0; parentesisI = 0; LlaveD = 0; LlaveI = 0; // Variables para identificar validacion
+            CorcheteD = 0; CorcheteI = 0; mas = 0; menos = 0; multi = 0; divi = 0; valida = 0;
             Char caracter;
             //Se inicia un siclo para la verificacion de la operacion sea correcta
             for (int i =0; i<entrada.Length;i++)
             {
+                
                 caracter = entrada.ElementAt(i);
+                int variable = (int)Char.GetNumericValue(caracter);// Se cambia a enteros para que valide los errores
                 if (caracter == '(')//Parentesis Izquierdo
                 {
                     parentesisI += 1;
+                    valida = 0;
                 }
                 else if (caracter == ')')//Parentesis Derecho
                 {
                     parentesisD += 1;
+                    valida = 0;
                 }
                 else if (caracter == '{')//LLave Izquierda
                 {
                     LlaveI += 1;
+                    valida = 0;
                 }
                 else if (caracter == '}')//LLave Derecha
                 {
                     LlaveD += 1;
+                    valida = 0;
                 }
                 else if (caracter == '[')//Corchete izquierdo
                 {
                     CorcheteI += 1;
+                    valida = 0;
                 }
                 else if (caracter == ']')//Corchete derecho
                 {
                     CorcheteD += 1;
+                    valida = 0;
+                }
+                else if (variable >= 0)//Numeros
+                {
+                    valida = 0;
+                }
+                else if (caracter =='+')//Operador mas
+                {
+                    valida += 1;
+                    if (valida >= 1)
+                        mas += 1;
+                    else
+                        valida = 0;
+                }
+                else if (caracter == '-')//Operador menos
+                {
+                    valida += 1;
+                    if (valida >= 1)
+                        menos += 1;
+                    else
+                        valida = 0;
+                }
+                else if (caracter == '*')//Operador multiplicacion
+                {
+                    valida += 1;
+                    if (valida >= 1)
+                        multi += 1;
+                    else
+                        valida = 0;
+                }
+                else if (caracter == '/')//Operador division
+                {
+                    valida += 1;
+                    if (valida >= 1)
+                        multi += 1;
+                    else
+                        valida = 0;
                 }
             }
             int sumaTodos = parentesisD + parentesisI + LlaveD + LlaveI + CorcheteD + CorcheteI;//Suma de todas las llaves encontradas y verificar si es correcta 
@@ -149,12 +194,8 @@ namespace lexico
                     }
                 }
             }
-            else//Si no manda un msg de verificacion de la operacion
-            {
-                MessageBox.Show("Verificar que la operacion sea correcta", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
 
-            return Salida;
+                return Salida;
 
         }
 
