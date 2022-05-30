@@ -24,9 +24,9 @@ namespace lexico
 
             for (int ii = 0; ii < entrada.Length; ii++)
             {
-
+                // se declara cada elemento del string para extrar con elementAt
                 letra = entrada.ElementAt(ii);
-                //int letra = (int)Char.GetNumericValue(caracter);// Se cambia a enteros para que valide los errores         
+                
                 switch (letra)
                 {
                     case 'a':
@@ -115,49 +115,95 @@ namespace lexico
                         break;
                 }
             }
-            int[] encriptado = new int[entrada.Length];
-            int contador = 1,numero=0;
-            int n1 = 0, n2 = 0, n3 = 0;
 
-            /// encriptado
             for (int ii = 0; ii < entrada.Length; ii++)
             {
-
                 Console.WriteLine(encriptar[ii]);
             }
-
             Console.WriteLine();
 
+            int[] encriptado = new int[entrada.Length];
+
+            int contador = 1;
+
+            int[] p1 = new int[3]; 
+            int[] p2 = new int[3]; 
+            int[] p3 = new int[3];
+
+            //Se encripta
             for (int ii = 0; ii < entrada.Length; ii++)
             {
                 if (contador==1)
                 {
-                    n1 = encriptar[ii] * 1;
-                    n2 = encriptar[ii] * 0;
-                    n3 = encriptar[ii] * 2;
-                    encriptado[ii] = n1 + n2 + n3;
+                    p1[0] = encriptar[ii] * 1;
+                    p2[0] = encriptar[ii] * 2;
+                    p3[0] = encriptar[ii] * 1;
                 }
                 else if (contador==2)
                 {
-                    n1 = encriptar[ii] * 2;
-                    n2 = encriptar[ii] * (-1);
-                    n3 = encriptar[ii] * 1;
-                    encriptado[ii] = n1 + n2 + n3;
+                    p1[1] = encriptar[ii] * 0;
+                    p2[1] = encriptar[ii] * (-1);
+                    p3[1] = encriptar[ii] * 3;
                 }
                 else if (contador==3)
                 {
-                    n1 = encriptar[ii] * 1;
-                    n2 = encriptar[ii] * 3;
-                    n3 = encriptar[ii] * 0;
-                    encriptado[ii] = n1 + n2 + n3;
+                    p1[2] = encriptar[ii] * 2;
+                    p2[2] = encriptar[ii] * 1;
+                    p3[2] = encriptar[ii] * 0;
+                                                   
+                    encriptado[ii - 2] = p1[0] + p1[1] + p1[2];
+                    encriptado[ii - 1] = p2[0] + p2[1] + p2[2];
+                    encriptado[ii] = p3[0] + p3[1] + p3[2];
+
                     contador = 0;
+                    Console.WriteLine();
                 }
                 contador += 1;
-                Console.WriteLine();
             }
+            //Imprimo resultados encriptados
+            Console.WriteLine();
             for (int ii = 0; ii < entrada.Length; ii++)
             {
                 Console.WriteLine(encriptado[ii]);
+            }
+
+            //Desencriptar
+
+            int[] Desencriptar = new int[entrada.Length];
+
+            for (int ii = 0; ii < entrada.Length; ii++)
+            {
+                if (contador == 1)
+                {
+                    p1[0] = encriptado[ii] * 1;
+                    p2[0] = encriptado[ii] * 2;
+                    p3[0] = encriptado[ii] * 1;
+                }
+                else if (contador == 2)
+                {
+                    p1[1] = encriptado[ii] * 0;
+                    p2[1] = encriptado[ii] * (-1);
+                    p3[1] = encriptado[ii] * 3;
+                }
+                else if (contador == 3)
+                {
+                    p1[2] = encriptado[ii] * 2;
+                    p2[2] = encriptado[ii] * 1;
+                    p3[2] = encriptado[ii] * 0;
+
+                    Desencriptar[ii] = p3[0] + p3[1] + p3[2];
+
+
+                    contador = 0;
+                    Console.WriteLine();
+                }
+                contador += 1;
+            }
+            //Imprimo resultados Desencriptados
+            Console.WriteLine();
+            for (int ii = 0; ii < entrada.Length; ii++)
+            {
+                Console.WriteLine(encriptar[ii]);
             }
             return Salida;
         }
